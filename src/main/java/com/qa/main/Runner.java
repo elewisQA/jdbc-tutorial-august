@@ -8,6 +8,13 @@ public class Runner {
         DatabaseConnector db = new DatabaseConnector();
         db.readAllActors();
         db.createActor("Geoff", "Rush");
+        System.out.println("---------------------------------");
+        db.readAllActors();
+        db.updateActorForename("Geoff", "Rush", "Susan");
+        System.out.println("---------------------------------");
+        db.readAllActors();
+        db.deleteActor("Susan", "Rush");
+        System.out.println("---------------------------------");
         db.readAllActors();
     }
 

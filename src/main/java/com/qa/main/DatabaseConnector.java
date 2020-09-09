@@ -19,8 +19,9 @@ public class DatabaseConnector {
     }
 
     public void createActor(String forename, String surname) throws SQLException {
-        statement.executeUpdate(String.format("INSERT INTO actor (`first_name`, `last_name`)" + " VALUES ('%s', '%s')",
-                forename, surname));
+    	String sql = String.format("INSERT INTO actor (`first_name`, `last_name`)" + " VALUES ('%s', '%s')",
+                forename.toUpperCase(), surname.toUpperCase());
+        statement.executeUpdate(sql);
     }
 
     public void readAllActors() throws SQLException {
@@ -33,12 +34,25 @@ public class DatabaseConnector {
         }
     }
 
-    public void updateActor() throws SQLException {
+    public void updateActorForename(String forename, String surname, String newForename) throws SQLException {
+    	// Update forename of actor
+    	String sql = String.format("UPDATE actor SET first_name = '%s' WHERE first_name = '%s' AND last_name = '%s';",
+    			newForename.toUpperCase(), forename.toUpperCase(), surname.toUpperCase());
+    	statement.executeUpdate(sql);
+
+    }
+    
+    public void updateActorSurname(String forename, String surname, String newSurname) throws SQLException {
+    	// Update surname of actor
+    	String sql = String.format("UPDATE actor SET last_name = '%s' WHERE first_name = '%s' AND last_name = '%s';",
+    			newSurname.toUpperCase(), forename.toUpperCase(), surname.toUpperCase());
+    	statement.executeUpdate(sql);
 
     }
 
-    public void deleteActor() throws SQLException {
-
+    public void deleteActor(String forename, String surname) throws SQLException {
+    	String sql = String.format("DELETE FROM actor WHERE first_name = '%s' AND last_name = '%s';", forename.toUpperCase(), surname.toUpperCase());
+    	statement.executeUpdate(sql);
     }
 
 }
