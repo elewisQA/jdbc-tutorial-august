@@ -9,27 +9,27 @@ import java.sql.Statement;
 import com.qa.utils.DatabaseConfiguration;
 
 public class DatabaseConnector {
-    private Connection conn;
+    private Connection connection;
 
-    private Statement st;
+    private Statement statement;
 
     public DatabaseConnector() throws SQLException {
-        conn = DriverManager.getConnection(DatabaseConfiguration.URL, DatabaseConfiguration.USER,
+        connection = DriverManager.getConnection(DatabaseConfiguration.URL, DatabaseConfiguration.USER,
                 DatabaseConfiguration.PASSWORD);
     }
 
     public void createActor(String forename, String surname) throws SQLException {
-        st.executeUpdate(String.format("INSERT INTO actor (`first_name`, `last_name`)" + " VALUES ('%s', '%s')",
+        statement.executeUpdate(String.format("INSERT INTO actor (`first_name`, `last_name`)" + " VALUES ('%s', '%s')",
                 forename, surname));
     }
 
     public void readAllActors() throws SQLException {
         String sql = "SELECT * FROM actor";
-        this.st = conn.createStatement();
-        ResultSet rs = this.st.executeQuery(sql);
+        this.statement = connection.createStatement();
+        ResultSet results = this.statement.executeQuery(sql);
 
-        while (rs.next()) {
-            System.out.println(rs.getString("first_name") + " " + rs.getString("last_name"));
+        while (results.next()) {
+            System.out.println(String.format("%s %s", results.getString("first_name"), results.getString("last_name")));
         }
     }
 
