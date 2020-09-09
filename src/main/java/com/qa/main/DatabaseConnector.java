@@ -18,11 +18,9 @@ public class DatabaseConnector {
                 DatabaseConfiguration.PASSWORD);
     }
 
-    public void createActor(String fname, String lname) throws SQLException {
-        // String concatenation style
-        String sql = String.format("INSERT INTO actor (`first_name`), (`last_name`) VALUES (`%s`, `%s`)", fname, lname);
-        this.st = conn.createStatement();
-        this.st.execute(sql);
+    public void createActor(String forename, String surname) throws SQLException {
+        st.executeUpdate(String.format("INSERT INTO actor (`first_name`, `last_name`)" + " VALUES ('%s', '%s')",
+                forename, surname));
     }
 
     public void readAllActors() throws SQLException {
