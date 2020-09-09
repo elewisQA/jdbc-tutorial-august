@@ -35,7 +35,7 @@ public class Runner {
     public static void insert() throws SQLException {
     	System.out.print("\nEnter actor's first-name: ");
     	String fname = sc.nextLine();
-    	System.out.println("\nEnter actor's second-name: ");
+    	System.out.print("\nEnter actor's second-name: ");
     	String sname = sc.nextLine();
     	System.out.println("\n");
     	System.out.println(fname + " " + sname);
@@ -45,18 +45,17 @@ public class Runner {
     public static void update() throws SQLException {
     	System.out.print("\nEnter actor's (current) forname: ");
     	String fname = sc.nextLine();
-    	System.out.println("\nEnter actor's (current) surname: ");
+    	System.out.print("\nEnter actor's (current) surname: ");
     	String sname = sc.nextLine();
-    	System.out.println("\nEnter actor's (new) forname: ");
+    	System.out.print("\nEnter actor's (new) forname: ");
     	String newName = sc.nextLine();
     	db.updateActorForename(fname, sname, newName);
-    	return;
     }
     
     public static void delete() throws SQLException {
     	System.out.print("\nEnter actor's first-name: ");
     	String fname = sc.nextLine();
-    	System.out.println("\nEnter actor's second-name: ");
+    	System.out.print("\nEnter actor's second-name: ");
     	String sname = sc.nextLine();
     	System.out.println("\n");
     	db.deleteActor(fname, sname);
