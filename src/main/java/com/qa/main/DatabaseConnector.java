@@ -21,6 +21,7 @@ public class DatabaseConnector {
     public void createActor(String forename, String surname) throws SQLException {
     	String sql = String.format("INSERT INTO actor (`first_name`, `last_name`)" + " VALUES ('%s', '%s')",
                 forename.toUpperCase(), surname.toUpperCase());
+    	System.out.println("sql: \n" + sql);
         statement.executeUpdate(sql);
     }
 
